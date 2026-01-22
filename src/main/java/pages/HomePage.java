@@ -7,20 +7,26 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 
 public class HomePage extends BasePage {
-    public HomePage(WebDriver driver){
+    public HomePage(WebDriver driver) {
         setDriver(driver);
         driver.get("https://ilcarro.web.app/search ");
         PageFactory.initElements(new AjaxElementLocatorFactory
-                (driver,10),this);
+                (driver, 10), this);
     }
 
 
     @FindBy(xpath = "//a[@href='/login?url=%2Fsearch']")
-        WebElement btnLogin;
+    WebElement btnLogin;
+    @FindBy(xpath = "//a[@href='/registration?url=%2Fsearch']")
+    WebElement btnSignUp;
+
+    public void clickBtnSignUp(){
+        btnSignUp.click();
+    }
 
 
-        public  void clickBtnLogin(){
-            btnLogin.click();
+    public void clickBtnLogin() {
+        btnLogin.click();
+    }
 
-        }
 }
