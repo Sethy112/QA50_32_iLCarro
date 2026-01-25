@@ -18,8 +18,14 @@ public abstract class BasePage {
             throw new RuntimeException(e);
         }
     }
-    public boolean isElementDisplayed(WebElement element){
+
+    public boolean isElementDisplayed(WebElement element) {
         return element.isDisplayed();
+    }
+
+    public boolean isTextInElementPresent(WebElement element, String text) {
+        return element.getText().contains(text);
+
     }
 
 }

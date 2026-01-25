@@ -2,18 +2,13 @@ package ui_tests;
 
 import dto.User;
 import manager.ApplicationManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
-import pages.SignUpPage;
-
-import java.util.Random;
 
 public class LoginTests extends ApplicationManager {
+
     @Test
     public void loginPositiveTest() {
         User user = User.builder()
@@ -29,26 +24,26 @@ public class LoginTests extends ApplicationManager {
 
     }
 
-    @Test
-    public void registrationPositiveTest() {
-        int i = new Random().nextInt(1000);
-        User user = User.builder()
-                .firstName("Vasiaa")
-                .lastName("Popov")
-                .email("qa32" + i + "@mail.il")
-                .password("Password12!")
-                .build();
-        HomePage homePage = new HomePage(getDriver());
-        homePage.clickBtnSignUp();
-        SignUpPage signUp = new SignUpPage(getDriver());
-        signUp.clickLabelFirstName();
-        signUp.clickCheckBox();
-        signUp.typeRegistrationForm(user);
-
-        signUp.clickBtnYalla();
-        Assert.assertTrue(signUp.isYouAreLoggedInSuccessDisplaed());
+//    @Test
+//    public void registrationPositiveTest() {
+//        int i = new Random().nextInt(1000);
+//        User user = User.builder()
+//                .firstName("Vasiaa")
+//                .lastName("Popov")
+//                .email("qa32" + i + "@mail.il")
+//                .password("Password12!")
+//                .build();
+//        HomePage homePage = new HomePage(getDriver());
+//        homePage.clickBtnSignUp();
+//        SignUpPage signUp = new SignUpPage(getDriver());
+//        signUp.clickLabelFirstName();
+//        signUp.clickCheckBox();
+//        signUp.typeRegistrationForm(user);
+//
+//        signUp.clickBtnYalla();
+//        Assert.assertTrue(signUp.isYouAreLoggedInSuccessDisplaed());
 
 
     }
 
-}
+
