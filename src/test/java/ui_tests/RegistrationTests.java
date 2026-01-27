@@ -6,7 +6,10 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.HomePage;
+import pages.PopUpPage;
 import pages.RegistrationPage;
+
+import static utils.UserFactory.*;
 
 import java.util.Random;
 
@@ -31,7 +34,20 @@ public class RegistrationTests extends ApplicationManager {
         registrationPage.typeRegistrationForm(user);
         registrationPage.clickCheckBoxWithActions();
         registrationPage.clickBtnYalla();
-        Assert.assertTrue(registrationPage.isTextInPopupPresent(
-                "You are logged in success"));
+//        Assert.assertTrue(registrationPage.isTextInPopupPresent(
+//                "You are logged in success"));
+        Assert.assertTrue(new PopUpPage(getDriver())
+                .isTextInPopUpMessagePresent("You are logged in success"));
+    }
+
+
+    @Test
+    public void reristrationPositiveTest_WithFaker() {
+        User user = positiveUser();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.clickCheckBoxWithActions();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(new PopUpPage(getDriver())
+                .isTextInPopUpMessagePresent("You are logged in success"));
     }
 }
