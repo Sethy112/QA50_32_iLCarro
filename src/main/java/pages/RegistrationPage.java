@@ -1,6 +1,7 @@
 package pages;
 
 import dto.User;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -52,7 +53,7 @@ public class RegistrationPage extends BasePage {
         int x = checkBoxAgree.getSize().getWidth();
         System.out.println(x + "x" + y);
         Actions actions = new Actions(driver);
-        actions.moveToElement(checkBoxAgree, -x/2, -y/2).click().perform();
+        actions.moveToElement(checkBoxAgree, -x / 2, -y / 2).click().perform();
 
     }
 
@@ -66,7 +67,22 @@ public class RegistrationPage extends BasePage {
     }
 
     public boolean isTextInPopupPresent(String text) {
-        return isTextInElementPresent(popUpYouAreLoggedInSuccess,text);
+
+        return isTextInElementPresent(popUpYouAreLoggedInSuccess, text);
+    }
+    public void setCheckBoxAgree(boolean value) {
+        if (checkBoxAgree.isSelected() != value)
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();",
+                            checkBoxAgree);
+    }
+
+    public void setCheckBoxAgreeTermsOfUse() {
+        if (!checkBoxAgree.isSelected()) {
+            ((JavascriptExecutor) driver)
+                    .executeScript("arguments[0].click();",
+                            checkBoxAgree);
+        }
     }
 }
 
