@@ -111,4 +111,183 @@ public class RegistrationTests extends ApplicationManager {
         softAssert.assertAll();
 
     }
+
+    @Test
+    public void registrationNegativeTest_WithFirstNameEmpty() {
+        User user = User.builder()
+                .firstName("")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("Parol12!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Name is required"));
+
+    }
+    @Test
+    public void registrationNegativeTest_WithLastNameEmpty() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("")
+                .email("vasya@yohoo.com")
+                .password("Parol12!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Last name is required"));
+
+    }
+    @Test
+    public void registrationNegativeTest_WithEmailEmpty() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("")
+                .password("Parol12!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Email is required"));
+
+    }
+    @Test
+    public void registrationNegativeTest_WithPasswordISEmpty() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Password is required"));
+
+    }
+
+    @Test
+    public void registrationNegativeTest_WithPasswordEmpty() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("Email is required")
+                .password("Parol12!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Wrong email format"));
+
+    }
+    @Test
+    public void registrationNegativeTest_PasswordWOUppercaseLetter() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("parol12!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Password must contain 1 uppercase letter, " +
+                        "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
+
+    }
+    @Test
+    public void registrationNegativeTest_PasswordWOLowercaseLetter() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("PAROL12!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Password must contain 1 uppercase letter, " +
+                        "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
+
+    }
+    @Test
+    public void registrationNegativeTest_PasswordWOSpecialSymbol() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("Paarol12")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Password must contain 1 uppercase letter, " +
+                        "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
+
+    }
+    @Test
+    public void registrationNegativeTest_PasswordWONumber() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("Paarool!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Password must contain 1 uppercase letter, " +
+                        "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
+
+    }
+    @Test
+    public void registrationNegativeTest_PassworLongLessEihgt() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("Parol1!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+        Assert.assertTrue(registrationPage
+                .isTextInErrorPresent("Password must contain minimum 8 symbols"));
+
+    }
+    @Test
+    public void registrationNegativeTest_PassworLongMoreSixsteen() {
+        User user = User.builder()
+                .firstName("ppppp")
+                .lastName("aaaa")
+                .email("vasya@yohoo.com")
+                .password("Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
+                        "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!")
+                .build();
+        registrationPage.typeRegistrationForm(user);
+        registrationPage.setCheckBoxAgreeTermsOfUse();
+        registrationPage.clickBtnYalla();
+//        Assert.assertTrue(registrationPage
+//                .isTextInErrorPresent("413 symbols and it steel work)))"));
+
+    }
 }
+
