@@ -174,7 +174,7 @@ public class RegistrationTests extends ApplicationManager {
     }
 
     @Test
-    public void registrationNegativeTest_WithPasswordEmpty() {
+    public void registrationNegativeTest_WithIncorrectEmail() {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
