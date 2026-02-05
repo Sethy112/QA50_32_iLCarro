@@ -10,6 +10,7 @@ import pages.HomePage;
 import pages.PopUpPage;
 import pages.RegistrationPage;
 
+import static utils.PropertiesReader.*;
 import static utils.UserFactory.*;
 
 import java.util.Random;
@@ -58,8 +59,8 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("fgfgfgf")
                 .lastName("trrjtj")
-                .email("vasya@yohoo.com")
-                .password("Parol123@!")
+                .email(getProperty("base.properties", "login"))
+                .password(getProperty("base.properties", "password"))
                 .build();
         registrationPage.typeRegistrationForm(user);
         registrationPage.clickCheckBoxWithActions();
@@ -75,8 +76,8 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName(" ")
                 .lastName("trrjtj")
-                .email("vasya@yohoo.com")
-                .password("Parol123@!")
+                .email(getProperty("base.properties", "login"))
+                .password(getProperty("base.properties", "password"))
                 .build();
         registrationPage.typeRegistrationForm(user);
         registrationPage.clickCheckBoxWithActions();
@@ -117,8 +118,8 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
-                .password("Parol12!")
+                .email(getProperty("base.properties", "login"))
+                .password(getProperty("base.properties", "password"))
                 .build();
         registrationPage.typeRegistrationForm(user);
         registrationPage.setCheckBoxAgreeTermsOfUse();
@@ -132,8 +133,8 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("")
-                .email("vasya@yohoo.com")
-                .password("Parol12!")
+                .email(getProperty("base.properties", "login"))
+                .password(getProperty("base.properties", "password"))
                 .build();
         registrationPage.typeRegistrationForm(user);
         registrationPage.setCheckBoxAgreeTermsOfUse();
@@ -148,7 +149,7 @@ public class RegistrationTests extends ApplicationManager {
                 .firstName("ppppp")
                 .lastName("aaaa")
                 .email("")
-                .password("Parol12!")
+                .password(getProperty("base.properties", "password"))
                 .build();
         registrationPage.typeRegistrationForm(user);
         registrationPage.setCheckBoxAgreeTermsOfUse();
@@ -162,7 +163,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("")
                 .build();
         registrationPage.typeRegistrationForm(user);
@@ -172,14 +173,13 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Password is required"));
 
     }
-
     @Test
     public void registrationNegativeTest_WithIncorrectEmail() {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
                 .email("Email is required")
-                .password("Parol12!")
+                .password(getProperty("base.properties", "password"))
                 .build();
         registrationPage.typeRegistrationForm(user);
         registrationPage.setCheckBoxAgreeTermsOfUse();
@@ -193,7 +193,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("parol12!")
                 .build();
         registrationPage.typeRegistrationForm(user);
@@ -209,7 +209,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("PAROL12!")
                 .build();
         registrationPage.typeRegistrationForm(user);
@@ -225,7 +225,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("Paarol12")
                 .build();
         registrationPage.typeRegistrationForm(user);
@@ -241,7 +241,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("Paarool!")
                 .build();
         registrationPage.typeRegistrationForm(user);
@@ -257,7 +257,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("Parol1!")
                 .build();
         registrationPage.typeRegistrationForm(user);
@@ -272,7 +272,7 @@ public class RegistrationTests extends ApplicationManager {
         User user = User.builder()
                 .firstName("ppppp")
                 .lastName("aaaa")
-                .email("vasya@yohoo.com")
+                .email(getProperty("base.properties", "login"))
                 .password("Parol1!Parol1!Parol1!" +
                         "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
                         "Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!Parol1!" +
