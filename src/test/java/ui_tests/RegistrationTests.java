@@ -66,7 +66,7 @@ public class RegistrationTests extends ApplicationManager {
         registrationPage.clickCheckBoxWithActions();
         registrationPage.clickBtnYalla();
         Assert.assertTrue(new PopUpPage(getDriver())
-                .isTextInPopUpMessagePresent("User already exists"));
+                .isTextInPopUpMessagePresent("User  exists"));
 
 
     }

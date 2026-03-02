@@ -1,6 +1,7 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -87,4 +88,17 @@ public abstract class BasePage {
         }
     }
 
-}
+    public void clickWait(WebElement element, int time) {
+        new WebDriverWait(driver, Duration.ofSeconds(time)).
+                until(ExpectedConditions.elementToBeClickable(element)).click();
+
+    }
+
+    public boolean urlContains(String partOfUrl, int time){
+       try{ return new WebDriverWait(driver,Duration.ofSeconds(time)).until(ExpectedConditions.urlContains(partOfUrl));
+
+    }catch(TimeoutException e ){
+        e.printStackTrace();
+        return false;
+    }
+}}

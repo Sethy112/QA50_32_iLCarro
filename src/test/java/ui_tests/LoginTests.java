@@ -3,23 +3,29 @@ package ui_tests;
 import dto.User;
 import manager.ApplicationManager;
 import org.testng.Assert;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.HomePage;
 import pages.LoginPage;
 import pages.PopUpPage;
+import utils.TestNGListener;
+
+import java.lang.reflect.Method;
 import static utils.PropertiesReader.*;
+@Listeners(TestNGListener.class)
 
 public class LoginTests extends ApplicationManager {
     SoftAssert softAssert = new SoftAssert();
 
 
     @Test
-    public void loginPositiveTest() {
+    public void loginPositiveTest(Method metod) {
         User user = User.builder()
                 .email(getProperty("base.properties", "login"))
                 .password(getProperty("base.properties", "password"))
                 .build();
+        logger.info("start test "+ metod.getName()+ " with user "+ user);
         HomePage homePage = new HomePage(getDriver());
         homePage.clickBtnLogin();
         LoginPage loginPage = new LoginPage(getDriver());
@@ -42,7 +48,7 @@ public class LoginTests extends ApplicationManager {
         loginPage.typeLoginForm(user);
         loginPage.clickBtnYalla();
         Assert.assertTrue(new PopUpPage(getDriver())
-                .isTextInPopUpMessagePresent("Logged is success"));
+                .isTextInPopUpMessagePresent("Logged in success"));
 
     }
 
@@ -59,6 +65,7 @@ public class LoginTests extends ApplicationManager {
         loginPage.clickBtnYalla();
         Assert.assertTrue(new PopUpPage(getDriver())
                 .isTextInPopUpMessagePresent("Login or Password incorrect"));
+
 
     }
 
