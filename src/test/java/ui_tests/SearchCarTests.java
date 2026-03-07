@@ -17,7 +17,7 @@ public class SearchCarTests extends ApplicationManager {
     SoftAssert softAssert = new SoftAssert();
     HomePage homePage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openHomePage() {
         homePage = new HomePage(getDriver());
 
@@ -63,7 +63,7 @@ public class SearchCarTests extends ApplicationManager {
     @Test
     public void searchCarPositiveTestWithCalendar() {
         String city = "Rehovot";
-        LocalDate startDate = LocalDate.of(2026, 2, 27);
+        LocalDate startDate = LocalDate.of(2026, 3, 12);
         LocalDate endDate = LocalDate.of(2026, 3, 22);
         homePage.typeSearchFormWithCalendar(city, startDate, endDate);
         homePage.clickBtnYalla();

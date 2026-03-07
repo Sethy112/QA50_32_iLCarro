@@ -19,13 +19,13 @@ public class RegistrationTests extends ApplicationManager {
     RegistrationPage registrationPage;
     SoftAssert softAssert = new SoftAssert();
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void goToRegistrationPage() {
         new HomePage(getDriver()).clickBtnSignUp();
         registrationPage = new RegistrationPage(getDriver());
     }
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void reristrationPositiveTest() {
         int i = new Random().nextInt(1000);
         User user = User.builder()
@@ -66,7 +66,7 @@ public class RegistrationTests extends ApplicationManager {
         registrationPage.clickCheckBoxWithActions();
         registrationPage.clickBtnYalla();
         Assert.assertTrue(new PopUpPage(getDriver())
-                .isTextInPopUpMessagePresent("User  exists"));
+                .isTextInPopUpMessagePresent("User already exists"));
 
 
     }

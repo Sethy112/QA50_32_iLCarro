@@ -19,7 +19,7 @@ public class LoginTests extends ApplicationManager {
     SoftAssert softAssert = new SoftAssert();
 
 
-    @Test
+    @Test(groups = {"Smoke"})
     public void loginPositiveTest(Method metod) {
         User user = User.builder()
                 .email(getProperty("base.properties", "login"))

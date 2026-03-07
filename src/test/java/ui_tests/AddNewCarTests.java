@@ -20,7 +20,7 @@ public class AddNewCarTests extends ApplicationManager {
     LoginPage loginPage;
     LetTheCarWorkPage letTheCarWorkPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void openletTheCarWorkPage() {
         User user = User.builder()
                 .email(getProperty("base.properties", "login"))
