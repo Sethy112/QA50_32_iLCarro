@@ -25,7 +25,7 @@ public class RegistrationTests extends ApplicationManager {
         registrationPage = new RegistrationPage(getDriver());
     }
 
-    @Test(groups = {"Smoke"})
+    @Test(groups = {"Smoke","user"})
     public void reristrationPositiveTest() {
         int i = new Random().nextInt(1000);
         User user = User.builder()
@@ -44,7 +44,7 @@ public class RegistrationTests extends ApplicationManager {
     }
 
 
-    @Test
+    @Test(groups = {"Smoke","user"})
     public void reristrationPositiveTest_WithFaker() {
         User user = positiveUser();
         registrationPage.typeRegistrationForm(user);
@@ -54,7 +54,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInPopUpMessagePresent("You are logged in success"));
     }
 
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_UserAlreadyExists() {
         User user = User.builder()
                 .firstName("fgfgfgf")
@@ -71,7 +71,7 @@ public class RegistrationTests extends ApplicationManager {
 
     }
 
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithSpaceInfirstName() {
         User user = User.builder()
                 .firstName(" ")
@@ -86,7 +86,7 @@ public class RegistrationTests extends ApplicationManager {
                 isTextInPopUpMessagePresent("{\"firstName\":\"must not be blank\"}"));
     }
 
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithllEmptyField() {
         User user = User.builder()
                 .firstName("")
@@ -113,7 +113,7 @@ public class RegistrationTests extends ApplicationManager {
 
     }
 
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithFirstNameEmpty() {
         User user = User.builder()
                 .firstName("")
@@ -128,7 +128,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Name is required"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithLastNameEmpty() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -143,7 +143,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Last name is required"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithEmailEmpty() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -158,7 +158,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Email is required"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithPasswordISEmpty() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -173,7 +173,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Password is required"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_WithIncorrectEmail() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -188,7 +188,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Wrong email format"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_PasswordWOUppercaseLetter() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -204,7 +204,7 @@ public class RegistrationTests extends ApplicationManager {
                         "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_PasswordWOLowercaseLetter() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -220,7 +220,7 @@ public class RegistrationTests extends ApplicationManager {
                         "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_PasswordWOSpecialSymbol() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -236,7 +236,7 @@ public class RegistrationTests extends ApplicationManager {
                         "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_PasswordWONumber() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -252,7 +252,7 @@ public class RegistrationTests extends ApplicationManager {
                         "1 lowercase letter, 1 number and one special symbol of [@$#^&*!]"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_PassworLongLessEihgt() {
         User user = User.builder()
                 .firstName("ppppp")
@@ -267,7 +267,7 @@ public class RegistrationTests extends ApplicationManager {
                 .isTextInErrorPresent("Password must contain minimum 8 symbols"));
 
     }
-    @Test
+    @Test(groups = "user")
     public void registrationNegativeTest_PassworLongMoreSixsteen() {
         User user = User.builder()
                 .firstName("ppppp")

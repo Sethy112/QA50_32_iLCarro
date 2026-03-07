@@ -19,7 +19,7 @@ public class LoginTests extends ApplicationManager {
     SoftAssert softAssert = new SoftAssert();
 
 
-    @Test(groups = {"Smoke"})
+    @Test(groups = {"regress","user"})
     public void loginPositiveTest(Method metod) {
         User user = User.builder()
                 .email(getProperty("base.properties", "login"))
@@ -30,13 +30,14 @@ public class LoginTests extends ApplicationManager {
         homePage.clickBtnLogin();
         LoginPage loginPage = new LoginPage(getDriver());
         loginPage.typeLoginForm(user);
+
         loginPage.clickBtnYalla();
         Assert.assertTrue(loginPage.isLoggedInDisplayed());
 
     }
 
 
-    @Test
+    @Test(groups = {"Smoke","user"})
     public void loginPositiveTest_WithPopupPage() {
         User user = User.builder()
                 .email("123@mail.il")
@@ -52,7 +53,7 @@ public class LoginTests extends ApplicationManager {
 
     }
 
-    @Test
+    @Test(groups = "user")
     public void loginNegativeTest_WrongPassword_WOSpecsymbol() {
         User user = User.builder()
                 .email("123@mail.il")
@@ -69,7 +70,7 @@ public class LoginTests extends ApplicationManager {
 
     }
 
-    @Test
+    @Test(groups = "user")
     public void loginNegativeTest_WrongEmail_Empty() {
         User user = User.builder()
                 .email("")
@@ -90,7 +91,7 @@ public class LoginTests extends ApplicationManager {
     }
 
 
-    @Test
+    @Test(groups = "user")
     public void loginPositiveTest_AllIsBlank() {
         User user = User.builder()
                 .email("")
@@ -108,7 +109,7 @@ public class LoginTests extends ApplicationManager {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = "user")
     public void loginNegativeTest_WrongPassword_Empty() {
         User user = User.builder()
                 .email("123@ail.il")

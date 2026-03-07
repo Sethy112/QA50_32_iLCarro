@@ -9,23 +9,23 @@ import utils.enums.FooterMenuItem;
 public class NavigationTests extends ApplicationManager {
 
 
-    @Test
+    @Test(groups = {"Smoke","navigation"})
     public void iconFacebookNavigationTest() {
         Assert.assertTrue(new HomePage(getDriver()).clickIconFooter(FooterMenuItem.ICON_FACEBOOK, "Facebook"));
     }
-    @Test
+    @Test(groups = {"navigation"})
     public void iconTelegramNavigationPositiveTest() {
         Assert.assertTrue(new HomePage(getDriver()).clickIconFooter(FooterMenuItem.ICON_TELEGRAM, "Telegram Messenger"));
     }
-    @Test
+    @Test(groups = {"navigation"})
     public void iconVkNavigationPositiveTest() {
         Assert.assertTrue(new HomePage(getDriver()).clickIconFooter(FooterMenuItem.ICON_VK, "VK | Welcome!"));
     }
-    @Test
+    @Test(groups = {"navigation"})
     public void iconInstaNavigationPositiveTest() {
         Assert.assertTrue(new HomePage(getDriver()).clickIconFooter(FooterMenuItem.ICON_INSTAGRAM, "Instagram"));
     }
-    @Test
+    @Test(groups = {"navigation"})
     public void iconSlackNavigationPositiveTest() {
         Assert.assertTrue(new HomePage(getDriver()).clickIconFooter(FooterMenuItem.ICON_SLACK, "Slack | AI Work Platform & Productivity Tools"));
     }

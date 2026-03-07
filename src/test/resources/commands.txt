@@ -1,7 +1,7 @@
 .\gradlew clean smoketests
 .\gradlew clean smoke_contact_tests
 .\gradlew clean negative_tests
-.\gradlew clean different_tests -Dsuite=smoke_contact_tests
+.\gradlew clean different_tests -Dsuite=usertests
 
 //через терминал компьютера
 cd    путь к проекту +

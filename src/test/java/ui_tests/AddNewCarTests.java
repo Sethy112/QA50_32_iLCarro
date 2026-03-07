@@ -35,7 +35,7 @@ public class AddNewCarTests extends ApplicationManager {
         letTheCarWorkPage = homePage.clickButtonHeader(HeaderMenuItem.LET_THE_CAR_WORK);
     }
 
-    @Test
+    @Test(groups = "regress")
     public void addNewCarPositevTest() {
         Car car = CarFactory.positiveCar();
         letTheCarWorkPage.typeAddNewCarForm(car);

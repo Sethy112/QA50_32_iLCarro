@@ -32,3 +32,35 @@ task smoketests(type: Test) {
         suites 'src/test/resources/smoketests.xml'
     }
 }
+task cartests(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/cartests.xml'
+    }
+}
+task navigationtests(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/navigationtests.xml'
+    }
+}
+task regressiontests(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/regressiontests.xml'
+    }
+}
+task usertests(type: Test) {
+    useTestNG() {
+        suites 'src/test/resources/usertests.xml'
+    }
+}
+task different_tests(type: Test) {
+    useTestNG() {
+        def suite = System.getProperty('suite', 'smoketests')
+        if (suite.equalsIgnoreCase('cartests')) {
+            suites 'src/test/resources/cartests.xml'
+        } else if (suite.equalsIgnoreCase('navigationtests')) {
+            suites 'src/test/resources/navigationtests.xml'
+        } else if (suite.equalsIgnoreCase('regressiontests')) {
+            suites 'src/test/resources/regressiontests.xml'
+        } else suites 'src/test/resources/usertests.xml'
+    }
+}

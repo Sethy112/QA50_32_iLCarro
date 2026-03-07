@@ -23,7 +23,7 @@ public class SearchCarTests extends ApplicationManager {
 
     }
 
-    @Test
+    @Test(groups ={ "regress","car"})
     public void searchCarPositiveTest() {
         String city = "Rehovot";
         LocalDate startDate = LocalDate.of(2026, 3, 12);
@@ -34,7 +34,7 @@ public class SearchCarTests extends ApplicationManager {
 
     }
 
-    @Test
+    @Test(groups = "car")
     public void searchCarNegativeTest_EmptyFieldsCity() {
         String city = "";
         LocalDate startDate = LocalDate.of(2026, 3, 12);
@@ -43,7 +43,7 @@ public class SearchCarTests extends ApplicationManager {
         Assert.assertTrue(homePage.urlContains("results", 5));
     }
 
-    @Test(expectedExceptions = org.openqa.selenium.TimeoutException.class)
+    @Test(groups = "car",expectedExceptions = org.openqa.selenium.TimeoutException.class)
     public void searchCarNegativeTest_EmptyFieldsCityWOJS() {
         String city = "";
         LocalDate startDate = LocalDate.of(2026, 3, 12);
@@ -52,7 +52,7 @@ public class SearchCarTests extends ApplicationManager {
         homePage.clickBtnYalla();
     }
 
-    @Test
+    @Test(groups = "car")
     public void searchCarNegativeTest_EmptyFieldsCityValidateError() {
         String city = "";
         LocalDate startDate = LocalDate.of(2026, 3, 12);
@@ -60,7 +60,7 @@ public class SearchCarTests extends ApplicationManager {
         homePage.typeSearchFormWOJS(city, startDate, endDate);
         Assert.assertTrue(homePage.isTextInErrorPresent("City is required"));
     }
-    @Test
+    @Test(groups ={ "regress","car"})
     public void searchCarPositiveTestWithCalendar() {
         String city = "Rehovot";
         LocalDate startDate = LocalDate.of(2026, 3, 12);
@@ -71,7 +71,7 @@ public class SearchCarTests extends ApplicationManager {
 
 
     }
-    @Test
+    @Test(groups = "car")
     public void searchCarNegativeTest_StartDateSameEndDate() {
         String city = "Rehovot";
         LocalDate startDate = LocalDate
@@ -88,7 +88,7 @@ public class SearchCarTests extends ApplicationManager {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = "car")
     public void searchCarNegativeTest_StartDate_BeforeToday() {
         String city = "Rehovot";
         LocalDate startDate = LocalDate
@@ -106,7 +106,7 @@ public class SearchCarTests extends ApplicationManager {
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups = "car")
     public void searchCarNegativeTest_StartDate_AfterEndDate() {
         String city = "Rehovot";
         LocalDate startDate = LocalDate
@@ -124,7 +124,7 @@ public class SearchCarTests extends ApplicationManager {
         softAssert.assertAll();
     }
 
-    @Test(expectedExceptions = java.time.DateTimeException.class)
+    @Test(groups = "car", expectedExceptions = java.time.DateTimeException.class)
     public void searchCarNegativeTest_DateNotValid() {
         String city = "Rehovot";
         LocalDate startDate = LocalDate
