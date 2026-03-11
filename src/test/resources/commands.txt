@@ -3,6 +3,8 @@
 .\gradlew clean negative_tests
 .\gradlew clean different_tests -Dsuite=usertests
 
+
+C:\Users\POLLAP\IdeaProjects\QA50_32_iLCarro
 //через терминал компьютера
 cd    путь к проекту +
 

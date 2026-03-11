@@ -24,14 +24,17 @@ public class SearchCarTests extends ApplicationManager {
     }
 
     @Test(groups ={ "regress","car"})
+
     public void searchCarPositiveTest() {
         String city = "Rehovot";
-        LocalDate startDate = LocalDate.of(2026, 3, 12);
-        LocalDate endDate = LocalDate.of(2026, 3, 22);
+        LocalDate startDate = LocalDate
+                .now();
+        LocalDate endDate = LocalDate
+                .now().plusDays(10);
         homePage.typeSearchForm(city, startDate, endDate);
         homePage.clickBtnYalla();
-        Assert.assertTrue(homePage.urlContains("results", 5));
-
+        Assert.assertTrue(homePage.urlContains
+                ("results", 5));
     }
 
     @Test(groups = "car")
